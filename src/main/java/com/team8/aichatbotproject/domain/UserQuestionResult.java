@@ -6,13 +6,14 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter
 @Entity
+@Getter
+@Setter
+@Table(name = "user_question_result")
 public class UserQuestionResult {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer resultId;
+    private Long resultId;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -24,14 +25,27 @@ public class UserQuestionResult {
 
     @ManyToOne
     @JoinColumn(name = "user_option_id", nullable = false)
-    private Option option;
+    private Option userOption;
 
     @Column(nullable = false)
     private Boolean isCorrect;
 
     @Column(nullable = false)
-    private Boolean isBookmarked = false;
+    private Boolean isBookmarked;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     private LocalDateTime createdAt;
+
+    @Override
+    public String toString() {
+        return "UserQuestionResult{" +
+                "resultId=" + resultId +
+                ", user=" + user +
+                ", question=" + question +
+                ", userOption=" + userOption +
+                ", isCorrect=" + isCorrect +
+                ", isBookmarked=" + isBookmarked +
+                ", createdAt=" + createdAt +
+                '}';
+    }
 }

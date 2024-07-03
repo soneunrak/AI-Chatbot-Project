@@ -1,15 +1,17 @@
 package com.team8.aichatbotproject.domain;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
 @Entity
+@Getter
+@Setter
+@Table(name = "user_quizset_attempt")
 public class UserQuizsetAttempt {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer attemptId;
+    private Long attemptId;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -20,9 +22,20 @@ public class UserQuizsetAttempt {
     private QuizSet quizSet;
 
     @ManyToOne
-    @JoinColumn(name = "current_question_id", nullable = false)
+    @JoinColumn(name = "current_question_id")
     private Question currentQuestion;
 
     @Column(nullable = false)
     private Boolean isComplete;
+
+    @Override
+    public String toString() {
+        return "UserQuizsetAttempt{" +
+                "attemptId=" + attemptId +
+                ", user=" + user +
+                ", quizSet=" + quizSet +
+                ", currentQuestion=" + currentQuestion +
+                ", isComplete=" + isComplete +
+                '}';
+    }
 }

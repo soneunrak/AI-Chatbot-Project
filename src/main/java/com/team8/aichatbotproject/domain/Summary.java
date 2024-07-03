@@ -6,21 +6,32 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter
 @Entity
+@Getter
+@Setter
+@Table(name = "summary")
 public class Summary {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer summaryId;
+    private Long summaryId;
 
     @ManyToOne
     @JoinColumn(name = "subject_id", nullable = false)
     private Subject subject;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String summaryContent;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     private LocalDateTime createdAt;
+
+    @Override
+    public String toString() {
+        return "Summary{" +
+                "summaryId=" + summaryId +
+                ", subject=" + subject +
+                ", summaryContent='" + summaryContent + '\'' +
+                ", createdAt=" + createdAt +
+                '}';
+    }
 }

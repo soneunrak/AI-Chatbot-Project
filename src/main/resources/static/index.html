@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홈 화면</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <div class="sidebar-header">학습 주제</div>
+        <ul class="subject-list">
+            <li>주제 1</li>
+            <li>주제 2</li>
+            <li>주제 3</li>
+            <li>주제 4</li>
+            <li>주제 5</li>
+            <li>주제 6</li>
+            <li>주제 7</li>
+            <li>주제 8</li>
+            <li>주제 9</li>
+            <li>주제 10</li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="content-header">메인</div>
+        <div class="content-display" id="content-display">
+        </div>
+        <div class="action-buttons">
+            <button onclick="uploadFile()">파일 업로드</button>
+            <button onclick="showSummary()">요약</button>
+            <button onclick="startQuiz()">문제 풀기</button>
+            <button onclick="review()">복습</button>
+        </div>
+    </div>
+    <div class="sidebar">
+        <div class="sidebar-header">문제 모음</div>
+        <div class="question-list">
+            <!-- 문제 리스트가 이곳에 표시됩니다. -->
+        </div>
+        <div class="sidebar-footer">
+            <button onclick="findFavorites()">즐겨찾기</button>
+            <button onclick="showAnswers()">오답</button>
+        </div>
+    </div>
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>

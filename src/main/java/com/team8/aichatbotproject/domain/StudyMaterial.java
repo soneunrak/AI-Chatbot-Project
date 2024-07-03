@@ -6,13 +6,14 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter
 @Entity
+@Getter
+@Setter
+@Table(name = "study_material")
 public class StudyMaterial {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer materialId;
+    private Long materialId;
 
     @ManyToOne
     @JoinColumn(name = "subject_id", nullable = false)
@@ -24,6 +25,17 @@ public class StudyMaterial {
     @Column(nullable = false)
     private String fileLocation;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     private LocalDateTime uploadedAt;
+
+    @Override
+    public String toString() {
+        return "StudyMaterial{" +
+                "materialId=" + materialId +
+                ", subject=" + subject +
+                ", fileName='" + fileName + '\'' +
+                ", fileLocation='" + fileLocation + '\'' +
+                ", uploadedAt=" + uploadedAt +
+                '}';
+    }
 }

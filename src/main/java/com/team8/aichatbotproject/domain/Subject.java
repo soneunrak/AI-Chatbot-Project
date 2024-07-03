@@ -6,13 +6,14 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter
 @Entity
+@Getter
+@Setter
+@Table(name = "subject")
 public class Subject {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer subjectId;
+    private Long subjectId;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -21,6 +22,16 @@ public class Subject {
     @Column(nullable = false)
     private String subjectName;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     private LocalDateTime createdAt;
+
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "subjectId=" + subjectId +
+                ", user=" + user +
+                ", subjectName='" + subjectName + '\'' +
+                ", createdAt=" + createdAt +
+                '}';
+    }
 }

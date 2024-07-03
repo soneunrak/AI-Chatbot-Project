@@ -4,13 +4,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
 @Entity
+@Getter
+@Setter
+@Table(name = "question")
 public class Question {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer questionId;
+    private Long questionId;
 
     @ManyToOne
     @JoinColumn(name = "quizset_id", nullable = false)
@@ -19,6 +20,16 @@ public class Question {
     @Column(nullable = false)
     private String questionContent;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String explanation;
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "questionId=" + questionId +
+                ", quizSet=" + quizSet +
+                ", questionContent='" + questionContent + '\'' +
+                ", explanation='" + explanation + '\'' +
+                '}';
+    }
 }

@@ -6,21 +6,35 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter
 @Entity
+@Getter
+@Setter
+@Table(name = "quiz_set")
 public class QuizSet {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer quizsetId;
+    private Long quizsetId;
 
     @ManyToOne
     @JoinColumn(name = "subject_id", nullable = false)
     private Subject subject;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     private LocalDateTime createdAt;
 
     private Integer numberOfQuestions;
-    private Integer score = 0;
+
+    @Column(nullable = false)
+    private Integer score;
+
+    @Override
+    public String toString() {
+        return "QuizSet{" +
+                "quizsetId=" + quizsetId +
+                ", subject=" + subject +
+                ", createdAt=" + createdAt +
+                ", numberOfQuestions=" + numberOfQuestions +
+                ", score=" + score +
+                '}';
+    }
 }
