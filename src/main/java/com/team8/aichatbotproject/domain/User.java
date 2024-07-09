@@ -9,8 +9,9 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-@Table(name = "users")  // 테이블명은 예약어를 피하기 위해 user 대신 users 로 지정
+@Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
@@ -22,8 +23,6 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private String name;
-
     private Integer age;
 
     private String job;
@@ -36,13 +35,19 @@ public class User {
     @Column(nullable = false)
     private Boolean isDeleted;
 
+    //엔티티가 생성될 때 -> 현재 날짜를 값으로 설정
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        isDeleted = false;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
                 ", age=" + age +
                 ", job='" + job + '\'' +
                 ", educationLevel='" + educationLevel + '\'' +

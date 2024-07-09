@@ -21,21 +21,21 @@
         <a href="index.html" class="back-button">
             <img src="/img/backimage.png" alt="뒤로가기" class="back-button-image">
         </a>
-        <form action="login.html">
+        <form id="signupForm">
             <label>
-                <input type="email" placeholder="이메일 주소" required>
+                <input type="email" name="email" placeholder="이메일 주소" required>
             </label>
             <label>
-                <input type="password" placeholder="비밀번호" required>
+                <input type="password" name="password" placeholder="비밀번호" required>
             </label>
             <label>
-                <input type="password" placeholder="비밀번호 확인" required>
+                <input type="password" name="confirmPassword" placeholder="비밀번호 확인" required>
             </label>
             <label>
-                <input type="number" placeholder="나이" required>
+                <input type="number" name="age" placeholder="나이" required>
             </label>
             <label>
-                <input type="text" placeholder="직업" required>
+                <input type="text" name="job" placeholder="직업" required>
             </label>
             <div class="education">
                 <label>최종학력</label>
@@ -49,4 +49,5 @@
     </div>
 </div>
 </body>
+<script src="js/signup.js"></script>
 </html>
