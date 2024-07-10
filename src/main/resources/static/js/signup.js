@@ -23,8 +23,8 @@ document.getElementById('signupForm').addEventListener('submit', async function 
         if(response.ok){
             window.location.href='login.html';
         } else {
-          const result = await response.text();
-          alert(result);
+            const result = await response.text();
+            alert(result);
         }
 
         const result = await response.text();
